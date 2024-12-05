@@ -9,8 +9,7 @@ interface TableProps {
 const TableBase: React.FC<TableProps> = ({ headers, data }) => {
   return (
     <div className='shadow-[0px_0px_16px_0px_rgba(0,0,0,0.40)] overflow-x-auto max-w-full'>
-      <table className="table-auto w-full border-collapse bg-[#FFFFFF
-]">
+      <table className="table-auto w-full border-collapse bg-[#FFFFFF]">
         <thead>
           <tr>
             {
