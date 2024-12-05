@@ -4,20 +4,17 @@ import TableBase from '@/components/Table/TableBase';
 
 const TableComponent: React.FC = () => {
 
-  const headers = ['Nome', 'Idade', 'País'];
+  const headers = ['Nome do Produto', 'ID do Produto', 'Preço', 'Quantidade', 'Tipo', 'Status', 'Ação'];
   
   const data = [
-    { Nome: 'Alice', Idade: 25, País: 'Brasil' },
-    { Nome: 'Roberto', Idade: 30, País: 'Canadá' },
-    { Nome: 'Carlos', Idade: 35, País: 'Reino Unido' },
-    { Nome: 'Fernanda', Idade: 28, País: 'Argentina' },
-    { Nome: 'Luís', Idade: 40, País: 'México' },
-    { Nome: 'Mariana', Idade: 22, País: 'Portugal' },
+    { 'Nome do Produto': 'Cereja', 'ID do Produto': '#KP267400', Preço: 'R$90', Quantidade: '350 pcs', Tipo: 'Sobremesa', Status: 'Pendente', 'Ação': '...' },
+    { 'Nome do Produto': 'Cereja', 'ID do Produto': '#KP267400', Preço: 'R$90', Quantidade: '350 pcs', Tipo: 'Sobremesa', Status: 'Pendente', 'Ação': '...' },
+    { 'Nome do Produto': 'Cereja', 'ID do Produto': '#KP267400', Preço: 'R$90', Quantidade: '350 pcs', Tipo: 'Sobremesa', Status: 'Pendente', 'Ação': '...' },
   ];
 
   return (
     <div>
-      <h2>Exemplo de Tabela</h2>
+      <h2 className='font-bold text-4xl mb-5'>Produto</h2>
       <TableBase headers={headers} data={data} />
     </div>
   );
