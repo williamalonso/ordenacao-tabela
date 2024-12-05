@@ -8,22 +8,19 @@ interface TableProps {
 
 const TableBase: React.FC<TableProps> = ({ headers, data }) => {
   return (
-    <div className='shadow-[0px_0px_16px_0px_rgba(0,0,0,0.40)] overflow-x-auto max-w-full'>
+    <div className='shadow-[0px_0px_16px_0px_rgba(0,0,0,0.40)] overflow-x-auto max-w-full rounded-lg'>
       <table className="table-auto w-full border-collapse bg-[#FFFFFF]">
         <thead>
-          <tr>
+          <tr className='text-[13px] font-montserrat'>
             {
               headers.map((header, index) => (
                 <th
                   key={index}
-                  style={{
-                    border: '1px solid #ddd',
-                    padding: '8px',
-                    backgroundColor: '#f4f4f4',
-                    textAlign: 'left',
-                  }}
+                  className='text-[#757575] text-left p-4'
                 >
-                  {header}
+                  <div className='min-w-32'>
+                    {header}
+                  </div>
                 </th>
               ))
             }
