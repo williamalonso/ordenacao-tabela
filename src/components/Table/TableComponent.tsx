@@ -8,8 +8,9 @@ const TableComponent: React.FC = () => {
   
   const data = [
     { 'Nome do Produto': 'Cereja', 'ID do Produto': '#KP267400', Preço: 'R$90', Quantidade: '350 pcs', Tipo: 'Sobremesa', Status: 'Pendente', 'Ação': '...' },
-    { 'Nome do Produto': 'Cereja', 'ID do Produto': '#KP267400', Preço: 'R$90', Quantidade: '350 pcs', Tipo: 'Sobremesa', Status: 'Pendente', 'Ação': '...' },
-    { 'Nome do Produto': 'Cereja', 'ID do Produto': '#KP267400', Preço: 'R$90', Quantidade: '350 pcs', Tipo: 'Sobremesa', Status: 'Pendente', 'Ação': '...' },
+    { 'Nome do Produto': 'Melancia', 'ID do Produto': '#TL449003', Preço: 'R$10,99', Quantidade: '23 litros', Tipo: 'Sobremesa', Status: 'Ativo', 'Ação': '...' },
+    { 'Nome do Produto': 'Cereja', 'ID do Produto': '#KP267400', Preço: 'R$90', Quantidade: '350 pcs', Tipo: 'Sobremesa', Status: 'Inativo', 'Ação': '...' },
+    { 'Nome do Produto': 'Cereja', 'ID do Produto': '#KP267400', Preço: 'R$90', Quantidade: '350 pcs', Tipo: 'Sobremesa', Status: 'À Venda', 'Ação': '...' },
   ];
 
   return (

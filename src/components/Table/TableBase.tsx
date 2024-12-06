@@ -11,12 +11,14 @@ const TableBase: React.FC<TableProps> = ({ headers, data }) => {
     <div className='shadow-[0px_0px_16px_0px_rgba(0,0,0,0.40)] overflow-x-auto rounded-lg mx-auto'>
       <table className="table-auto w-full border-collapse bg-[#FFFFFF]">
         <thead>
-          <tr className='text-[13px] font-montserrat'>
+          <tr className='text-[13px] font-montserrat border-b border-solid border-[#ddd]'>
             {
               headers.map((header, index) => (
                 <th
                   key={index}
-                  className='text-[#757575] text-left p-4'
+                  className={`text-[#757575] text-left p-4
+                    ${ header === 'Ação' ? 'text-center' : ''}
+                  `}
                 >
                   <div className='min-w-32'>
                     {header}
@@ -32,12 +34,19 @@ const TableBase: React.FC<TableProps> = ({ headers, data }) => {
               {headers.map((header, colIndex) => (
                 <td
                   key={colIndex}
-                  style={{
-                    border: '1px solid #ddd',
-                    padding: '8px',
-                  }}
+                  className={`p-4 font-bold border-b border-solid border-[#ddd]
+                    ${ header !== 'Nome do Produto' ? 'text-[#757575]' : ''}
+                    ${ header === 'Ação' ? 'text-center' : ''}
+                  `}
                 >
-                  {row[header] || '-'}
+                  <div className={`
+                    ${ header === 'Status' && row[header] === 'Pendente' ? 'text-center text-yellow-500 bg-orange-100 rounded-full' : ''}
+                    ${ header === 'Status' && row[header] === 'Ativo' ? 'text-center text-green-500 bg-green-100 rounded-full' : ''}
+                    ${ header === 'Status' && row[header] === 'Inativo' ? 'text-center text-red-500 bg-red-100 rounded-full' : ''}
+                    ${ header === 'Status' && row[header] === 'À Venda' ? 'text-center text-blue-500 bg-blue-100 rounded-full' : ''}
+                  `}>
+                    {row[header] || '-'}
+                  </div>
                 </td>
               ))}
             </tr>
