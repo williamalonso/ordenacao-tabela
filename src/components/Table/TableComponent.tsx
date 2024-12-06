@@ -13,9 +13,11 @@ const TableComponent: React.FC = () => {
   ];
 
   return (
-    <div>
-      <h2 className='font-bold text-4xl mb-5'>Produto</h2>
-      <TableBase headers={headers} data={data} />
+    <div className='overflow-x-auto w-full'>
+      <div className='mx-auto max-w-screen-xl mb-4'>
+        <h2 className='font-bold text-4xl mb-5'>Produto</h2>
+        <TableBase headers={headers} data={data} />
+      </div>
     </div>
   );
 };
