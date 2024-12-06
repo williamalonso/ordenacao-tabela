@@ -35,17 +35,63 @@ const TableBase: React.FC<TableProps> = ({ headers, data }) => {
                 <td
                   key={colIndex}
                   className={`p-4 font-bold border-b border-solid border-[#ddd]
-                    ${ header !== 'Nome do Produto' ? 'text-[#757575]' : ''}
-                    ${ header === 'Ação' ? 'text-center' : ''}
+                    ${header !== 'Nome do Produto' ? 'text-[#757575]' : ''}
+                    ${header === 'Ação' ? 'text-center' : ''}
                   `}
                 >
-                  <div className={`
-                    ${ header === 'Status' && row[header] === 'Pendente' ? 'text-center text-yellow-500 bg-orange-100 rounded-full' : ''}
-                    ${ header === 'Status' && row[header] === 'Ativo' ? 'text-center text-green-500 bg-green-100 rounded-full' : ''}
-                    ${ header === 'Status' && row[header] === 'Inativo' ? 'text-center text-red-500 bg-red-100 rounded-full' : ''}
-                    ${ header === 'Status' && row[header] === 'À Venda' ? 'text-center text-blue-500 bg-blue-100 rounded-full' : ''}
-                  `}>
-                    {row[header] || '-'}
+                  <div
+                    className={`${
+                      header === 'Status' && row[header] === 'Pendente'
+                        ? 'text-center text-yellow-500 bg-orange-100 rounded-full'
+                        : ''
+                    } ${
+                      header === 'Status' && row[header] === 'Ativo'
+                        ? 'text-center text-green-500 bg-green-100 rounded-full'
+                        : ''
+                    } ${
+                      header === 'Status' && row[header] === 'Inativo'
+                        ? 'text-center text-red-500 bg-red-100 rounded-full'
+                        : ''
+                    } ${
+                      header === 'Status' && row[header] === 'À Venda'
+                        ? 'text-center text-blue-500 bg-blue-100 rounded-full'
+                        : ''
+                    }`}
+                  >
+                    {header === 'Nome do Produto' && (
+                      <div className="flex items-center gap-2">
+                        {row[header] === 'Cereja' && (
+                          <img
+                            src="/images/cereja.jpg"
+                            alt="Cereja"
+                            className="w-6 h-6"
+                          />
+                        )}
+                        {row[header] === 'Melancia' && (
+                          <img
+                            src="/images/melancia.webp"
+                            alt="Melancia"
+                            className="w-6 h-6"
+                          />
+                        )}
+                        {row[header] === 'Baunilha' && (
+                          <img
+                            src="/images/sorvete.png"
+                            alt="Baunilha"
+                            className="w-6 h-6"
+                          />
+                        )}
+                        {row[header] === 'Brigadeiro' && (
+                          <img
+                            src="/images/brigadeiro.jpeg"
+                            alt="Brigadeiro"
+                            className="w-6 h-6"
+                          />
+                        )}
+                        <span>{row[header]}</span>
+                      </div>
+                    )}
+                    {header !== 'Nome do Produto' && (row[header] || '-')}
                   </div>
                 </td>
               ))}
