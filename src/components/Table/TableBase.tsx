@@ -1,5 +1,7 @@
 // src/components/Table/TableBase.tsx
 import React from 'react';
+import { useState } from 'react';
+import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/solid';
 
 interface TableProps {
   headers: string[];
@@ -7,6 +9,21 @@ interface TableProps {
 }
 
 const TableBase: React.FC<TableProps> = ({ headers, data }) => {
+
+  const [sortColumn, setSortColumn] = useState<string | null>(null);
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
+
+  const handleSort = (header: string) => {
+    if (sortColumn === header) {
+      // Alternar direção se a mesma coluna for clicada
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    } else {
+      // Nova coluna selecionada, define como ascendente
+      setSortColumn(header);
+      setSortDirection('asc');
+    }
+  };
+
   return (
     <div className='shadow-[0px_0px_16px_0px_rgba(0,0,0,0.40)] overflow-x-auto rounded-lg mx-auto'>
       <table className="table-auto w-full border-collapse bg-[#FFFFFF]">
@@ -16,12 +33,24 @@ const TableBase: React.FC<TableProps> = ({ headers, data }) => {
               headers.map((header, index) => (
                 <th
                   key={index}
-                  className={`text-[#757575] text-left p-4
-                    ${ header === 'Ação' ? 'text-center' : ''}
-                  `}
+                  onClick={() => handleSort(header)}
+                  className={`text-[#757575] text-left p-4`}
                 >
-                  <div className='min-w-32'>
-                    {header}
+                  <div className={`min-w-32 flex
+                    ${ header === 'Ação' ? 'flex justify-center' : ''}
+                  `}>
+                    <div className='cursor-pointer pr-2'>
+                      {header}
+                    </div>
+                    {sortColumn === header && (
+                      <span>
+                        {sortDirection === 'asc' ? (
+                          <ChevronUpIcon className="w-4 h-4 text-gray-500 inline" />
+                        ) : (
+                          <ChevronDownIcon className="w-4 h-4 text-gray-500 inline" />
+                        )}
+                      </span>
+                    )}
                   </div>
                 </th>
               ))
