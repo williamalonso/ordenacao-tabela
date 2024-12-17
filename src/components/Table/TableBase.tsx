@@ -42,15 +42,18 @@ const TableBase: React.FC<TableProps> = ({ headers, data }) => {
                     <div className='cursor-pointer pr-2'>
                       {header}
                     </div>
-                    {sortColumn === header && (
-                      <span>
-                        {sortDirection === 'asc' ? (
-                          <ChevronUpIcon className="w-4 h-4 text-gray-500 inline" />
-                        ) : (
-                          <ChevronDownIcon className="w-4 h-4 text-gray-500 inline" />
-                        )}
-                      </span>
-                    )}
+                    {/* Espaço fixo para os ícones */}
+                    <span className="w-4 h-4">
+                      {sortColumn === header && (
+                        <span>
+                          {sortDirection === 'asc' ? (
+                            <ChevronUpIcon className="text-gray-500 inline" />
+                          ) : (
+                            <ChevronDownIcon className="text-gray-500 inline" />
+                          )}
+                        </span>
+                      )}
+                    </span>
                   </div>
                 </th>
               ))
