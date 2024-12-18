@@ -3,16 +3,16 @@ import React, { useState } from 'react';
 import TableBase from '@/components/Table/TableBase';
 
 type TableRow = {
-  [key: string]: string;
+  [key: string]: string | number;
 };
 
 const TableComponent: React.FC = () => {
 
   const initialData: TableRow[]  = [
-    { 'Nome do Produto': 'Cereja', 'ID do Produto': '#KP267400', Preço: 'R$90,50', Quantidade: '350 unidades', Tipo: 'Fruta', Status: 'Pendente', 'Ação': '...' },
-    { 'Nome do Produto': 'Melancia', 'ID do Produto': '#TL449003', Preço: 'R$10,99', Quantidade: '23 litros', Tipo: 'Fruta', Status: 'Ativo', 'Ação': '...' },
-    { 'Nome do Produto': 'Baunilha', 'ID do Produto': '#GB651535', Preço: 'R$100,50', Quantidade: '1200 unidades', Tipo: 'Sorvete', Status: 'Inativo', 'Ação': '...' },
-    { 'Nome do Produto': 'Brigadeiro', 'ID do Produto': '#SD558612', Preço: 'R$9,99', Quantidade: '4 unidades', Tipo: 'Sobremesa', Status: 'À Venda', 'Ação': '...' },
+    { 'Nome do Produto': 'Cereja', 'ID do Produto': '#KP267400', Preço: 90.50, Quantidade: 350, Tipo: 'Fruta', Status: 'Pendente', 'Ação': '...' },
+    { 'Nome do Produto': 'Melancia', 'ID do Produto': '#TL449003', Preço: 10.99, Quantidade: 23, Tipo: 'Fruta', Status: 'Ativo', 'Ação': '...' },
+    { 'Nome do Produto': 'Baunilha', 'ID do Produto': '#GB651535', Preço: 100.50, Quantidade: 1200, Tipo: 'Sorvete', Status: 'Inativo', 'Ação': '...' },
+    { 'Nome do Produto': 'Brigadeiro', 'ID do Produto': '#SD558612', Preço: 9.99, Quantidade: 4, Tipo: 'Sobremesa', Status: 'A Venda', 'Ação': '...' },
   ];
 
   const [data, setData] = useState(initialData);
@@ -22,26 +22,23 @@ const TableComponent: React.FC = () => {
   const headers = ['Nome do Produto', 'ID do Produto', 'Preço', 'Quantidade', 'Tipo', 'Status', 'Ação'];
 
   const handleSort  = (header: string) => {
-    if (sortColumn === header) {
-      // Alternar direção se a mesma coluna for clicada
-      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
-    } else {
-      // Nova coluna selecionada, define como ascendente
-      setSortColumn(header);
-      setSortDirection('asc');
-    }
+    const isSameColumn = sortColumn === header;
+    const newDirection = isSameColumn && sortDirection === 'asc' ? 'desc' : 'asc';
 
-    // Ordenar os dados
+    setSortColumn(header);
+    setSortDirection(newDirection);
+
     const sortedData = [...data].sort((a, b) => {
       const valueA = a[header] || '';
       const valueB = b[header] || '';
 
-      // Comparação com base na direção
-      if (sortDirection === 'asc') {
-        return valueA > valueB ? 1 : valueA < valueB ? -1 : 0;
-      } else {
-        return valueA < valueB ? 1 : valueA > valueB ? -1 : 0;
-      }
+      // Lidar com números e strings
+      const parsedA = typeof valueA === 'number' ? valueA : String(valueA).toLowerCase();
+      const parsedB = typeof valueB === 'number' ? valueB : String(valueB).toLowerCase();
+
+      if (parsedA > parsedB) return newDirection === 'asc' ? 1 : -1;
+      if (parsedA < parsedB) return newDirection === 'asc' ? -1 : 1;
+      return 0;
     });
 
     setData(sortedData);

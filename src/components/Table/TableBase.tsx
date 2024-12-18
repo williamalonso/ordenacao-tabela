@@ -73,7 +73,7 @@ const TableBase: React.FC<TableProps> = ({ headers, data, onSort, sortColumn, so
                         ? 'text-center text-red-500 bg-red-100 rounded-full'
                         : ''
                     } ${
-                      header === 'Status' && row[header] === 'À Venda'
+                      header === 'Status' && row[header] === 'A Venda'
                         ? 'text-center text-blue-500 bg-blue-100 rounded-full'
                         : ''
                     }`}
