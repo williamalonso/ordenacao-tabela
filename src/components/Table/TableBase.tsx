@@ -78,6 +78,7 @@ const TableBase: React.FC<TableProps> = ({ headers, data, onSort, sortColumn, so
                         : ''
                     }`}
                   >
+
                     {header === 'Nome do Produto' && (
                       <div className="flex items-center gap-2">
                         {row[header] === 'Cereja' && (
@@ -111,7 +112,23 @@ const TableBase: React.FC<TableProps> = ({ headers, data, onSort, sortColumn, so
                         <span>{row[header]}</span>
                       </div>
                     )}
-                    {header !== 'Nome do Produto' && (row[header] || '-')}
+
+                    {header === 'Preço' && typeof row[header] === 'number' && (
+                      <span>
+                        {new Intl.NumberFormat('pt-BR', {
+                          style: 'currency',
+                          currency: 'BRL',
+                        }).format(row[header])}
+                      </span>
+                    )}
+
+                    {header === 'Quantidade' && typeof row[header] === 'number' && (
+                      <span>
+                        {row[header]} unidades
+                      </span>
+                    )}
+
+                    {header !== 'Nome do Produto' && header !== 'Preço' && header !== 'Quantidade' && (row[header] || '-')}
                   </div>
                 </td>
               ))}
