@@ -1,7 +1,5 @@
 // src/components/Table/TableBase.tsx
 import React from 'react';
-import { useState } from 'react';
-import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/solid';
 
 interface TableProps {
   headers: string[];
