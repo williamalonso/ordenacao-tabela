@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import TableBase from '@/components/Table/TableBase';
 
-type TableRow = {
+interface TableRow {
   [key: string]: string | number;
 };
 
