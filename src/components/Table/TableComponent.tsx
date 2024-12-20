@@ -12,7 +12,7 @@ const TableComponent: React.FC = () => {
     { 'Nome do Produto': 'Cereja', 'ID do Produto': '#KP267400', Preço: 90.50, Quantidade: 350, Tipo: 'Fruta', Status: 'Pendente', 'Ação': '...' },
     { 'Nome do Produto': 'Melancia', 'ID do Produto': '#TL449003', Preço: 10.99, Quantidade: 23, Tipo: 'Fruta', Status: 'Ativo', 'Ação': '...' },
     { 'Nome do Produto': 'Baunilha', 'ID do Produto': '#GB651535', Preço: 100.50, Quantidade: 1200, Tipo: 'Sorvete', Status: 'Inativo', 'Ação': '...' },
-    { 'Nome do Produto': 'Brigadeiro', 'ID do Produto': '#SD558612', Preço: 9.99, Quantidade: 4, Tipo: 'Sobremesa', Status: 'A Venda', 'Ação': '...' },
+    { 'Nome do Produto': 'Brigadeiro', 'ID do Produto': '#SD558612', Preço: 9.99, Quantidade: 4, Tipo: 'Sobremesa', Status: 'Ativo', 'Ação': '...' },
   ];
 
   const [data, setData] = useState(initialData);
